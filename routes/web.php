@@ -3,21 +3,12 @@
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\CourseController;
 
-Route::get('/', function () {
-    return view('courses', ['courses' => CourseController::index()]);
-});
+// Courses Routes
+Route::resource('courses', CourseController::class);
+Route::get('/', [CourseController::class, 'index'])->name('courses.index');
 
-Route::get('/teachers', function () {
-    return view('teachers', ['teachers' => TeacherController::index()]);
-});
-
-Route::get('/courses', function () {
-    return view('courses', ['courses' => CourseController::index()]);
-});
-
-Route::get('/courses/create', function () {
-    return view('courses.create');
-});
+// Teachers Routes
+Route::resource('teachers', TeacherController::class);
 
 Route::get('/teachers/create', function () {
     return view('teachers.create');

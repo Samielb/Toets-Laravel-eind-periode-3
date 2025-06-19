@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Teacher extends Model
 {
-    protected $fillable = ['name', 'email', 'hobbies'];
+    use HasFactory;
 
-    public function courses(): HasMany
-    {
-        return $this->hasMany(Course::class);
+    protected $fillable = ['naam','hobby'];
+
+    public function subjects(){
+        return $this->hasMany(Subject::class);
     }
 }
